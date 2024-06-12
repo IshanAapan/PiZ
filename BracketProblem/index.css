@@ -1,0 +1,38 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content:center
+}
+
+input{
+    font-size: 3vh;
+    border-radius: 7px;
+    padding-left: 0.5rem;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+button{
+    font-size: 2vh;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #3572EF;
+    color: white;
+
+}
+.heading{
+    display: flex;
+    justify-content: center;
+}
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="tictactoe.css">
+</head>
+
+<body>
+    <div class="outerDiv">
+        <div class="h-txt txt">
+            <h1>Tic Tac Toe</h1>
+        </div>
+        <div class="rowContainer" id="rowContainer_id">
+            <div id="board">
+                <div class="row1">
+                    <input type="text" id="cell_0" class="cell" onclick="" readonly>
+                    <input type="text" id="cell_1" class="cell" onclick="" readonly>
+                    <input type="text" id="cell_2" class="cell" onclick="" readonly>
+                </div>
+                <div class="row2">
+                    <input type="text" id="cell_3" class="cell" onclick="" readonly>
+                    <input type="text" id="cell_4" class="cell" onclick="" readonly>
+                    <input type="text" id="cell_5" class="cell" onclick="" readonly>
+                </div>
+                <div class="row3">
+                    <input type="text" id="cell_6" class="cell" onclick="" readonly>
+                    <input type="text" id="cell_7" class="cell" onclick="" readonly>
+                    <input type="text" id="cell_8" class="cell" onclick="" readonly>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="txt nxtturn">
+            <h1>Next Turn:- X'</h1>
+        </div> -->
+        <div class="btn">
+            <button type="button" onclick="restartButton()">
+                <h3>Restart<h3>
+            </button>
+        </div>
+    </div>
+    <script src="./tictactoe.js"></script>
+</body>
+
+</html>

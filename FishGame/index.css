@@ -1,0 +1,108 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url("https://img.freepik.com/free-vector/school-fishes-background-hand-drawn-style_23-2147792684.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+.inputBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* width: fit-content; */
+    
+    
+}
+.border{
+    margin-top: 3rem;
+    border: 1px solid white;
+    border-radius: 6px;
+    padding: 6rem;
+    height: fit-content;    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+label{
+    font-size: 3vh;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 1rem 0;
+    user-select: none;
+}
+input{
+    font-size: 2.5vh;
+    width: 98%;
+    border-radius: 1px;
+    padding: 1rem;
+    /* display: flex; */
+}
+button{
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.7vh;
+    border-radius: 4px;
+    background: #5C88C9;
+    color: white;
+    cursor: pointer;
+}
+
+#players_border{
+    display: none;
+    overflow-y: auto;
+    /* height: fit-content; */
+    /* padding-top: 24rem; */
+}
+
+ /* #player_border{
+    margin-top: 11rem;
+    border: 1px solid white;
+    border-radius: 6px;
+    padding: 6rem;
+    height: 41%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 13%; */
+    /* overflow: scroll; */
+/* } */
+
+.playerNameBtn{
+    margin: 1rem 0;
+}
+
+#chapaak_border{
+    display: none;
+    overflow-y: auto;
+    /* height: fit-content; */
+    padding-top: 9rem;
+    overflow: hidden;
+    gap:20px
+}
+
+
+/* .nxtBtn{
+    margin: 1rem 0;
+} */
+
+.word {
+    font-size: 24px;
+    transition: color 0.5s ease, opacity 0.5s ease;
+}
+
+.word-change {
+    color: red;
+    opacity: 0.5;
+}
