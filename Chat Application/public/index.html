@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Application</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        height: 100vh;
+        /* display: flex; */
+    }
+
+    .comboMainLeft {
+        display: flex;
+        position: relative;
+        height: 90vh;
+    }
+
+    .mainSection {
+        width: 85%;
+        background-color: #254336;
+        color: white;
+        height: 100%;
+    }
+
+    .chatContainer {
+        margin: auto;
+        width: 90vw;
+    }
+
+    .rightSide {
+        position: absolute;
+        right: 0;
+        background: #6b8a7a;
+        height: 100%;
+        width: 15%;
+    }
+
+    .entermsghere {
+        height: 62px;
+        background: white;
+        border: 2px solid;
+        width: 85%;
+        overflow: hidden;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+    input {
+        width: 88%;
+        height: 64px;
+        font-size: 1.5vw;
+        padding-left: 1rem;
+        border: none;
+        outline: none;
+    }
+
+    button {
+        height: 99%;
+        width: 11%;
+        cursor: pointer;
+        border-radius: 8px;
+        border: none;
+    }
+
+    #send {
+        height: 50%;
+        width: 26%;
+    }
+
+    .userSection {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.2vw;
+        margin: 4rem 0;
+        gap: 25px;
+        /* background-color: #e4c59e; */
+        user-select: none;
+        cursor: pointer;
+    }
+
+    .userName {
+        border-radius: 8px;
+        width: 94%;
+        height: 54px;
+        text-align: center;
+        /* display: flex; */
+        justify-content: center;
+    }
+
+    #user {
+        width: 15%;
+        height: auto;
+    }
+
+    .loginUser {
+        display: flex;
+        align-items: center;
+        width: 90%;
+        justify-content: end;
+        margin: auto;
+    }
+
+    #loginProfie {
+        width: 2.5%;
+        height: auto;
+    }
+
+    .message-container {
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 10px;
+        flex-direction: column;
+        margin-left: 3rem;
+    }
+
+    .message-sender {
+        background-color: #728364;
+        border-radius: 10px;
+        padding: 10px;
+        max-width: 80%;
+        width: fit-content;
+        /* margin: 2rem; */
+        /* margin-left: 1rem; */
+    }
+
+    .message {
+        word-wrap: break-word;
+    }
+
+    .selected{
+        color:#254336;
+    }
+
+
+    .small-text {
+        font-size: 17px;
+        color: #ccc;
+        margin-top: 4px;
+    }
+</style>
+
+<body>
+    <div class="loginUser">
+        <svg id="loginProfie" fill="#000000" width="800px" height="800px" viewBox="0 0 24 24" id="user"
+            data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color">
+            <path id="secondary" d="M9,15h6a5,5,0,0,1,5,5v0a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1v0a5,5,0,0,1,5-5Z" style="
+            fill: none;
+            stroke: rgb(44, 169, 188);
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 2;
+          "></path>
+            <circle id="primary" cx="12" cy="7" r="4" style="
+            fill: none;
+            stroke: rgb(0, 0, 0);
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 2;
+          "></circle>
+        </svg>
+        <h1 id="userName"></h1>
+    </div>
+    <div class="chatContainer">
+        <div class="trio">
+            <div class="comboMainLeft">
+                <div class="mainSection" id="mainSection"></div>
+                <div class="rightSide">
+                    <div class="userSection" id="userSection">
+                        <div class="userName" id="userName">
+                            <!-- <div style="background-color: #E4C59E;"></div> -->
+                            <svg id="user" fill="#000000" width="800px" height="800px" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z" />
+                            </svg>
+                            <div class="u1" id="otherUsers"></div>
+                            <!-- <div class="u2">User2</div>
+                        <div class="u3">User3</div> -->
+                        </div>
+                    </div>
+                    <!-- righside -->
+                </div>
+                <div class="entermsghere">
+                    <!-- Enter your msg here... -->
+                    <input type="text" id="inputTxt" placeholder="Type your message here..." required />
+                    <button type="button" onclick="send()">
+                        <svg id="send" width="800px" height="800px" viewBox="0 0 15 15" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M14.9541 0.709802C14.93 0.761862 14.8965 0.810638 14.8536 0.853553L5.40076 10.3064L8.07126 14.7573C8.16786 14.9183 8.34653 15.0116 8.53386 14.9989C8.72119 14.9862 8.88561 14.8696 8.95958 14.697L14.9541 0.709802Z"
+                                fill="#000000" />
+                            <path
+                                d="M4.69366 9.59931L0.242756 6.92876C0.0817496 6.83216 -0.0115621 6.65349 0.00115182 6.46616C0.0138657 6.27883 0.130462 6.11441 0.303045 6.04044L14.293 0.0447451C14.2399 0.0688812 14.1902 0.102782 14.1465 0.146447L4.69366 9.59931Z"
+                                fill="#000000" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let selectedUser = null;
+        console.log("Welcome to Chat Application!!");
+
+        let name = prompt("Enter your Name");
+        function getName() {
+            while (name === null || name === "") {
+                name = prompt("Enter your Name");
+            }
+
+            addUser(name);
+        }
+        getName();
+
+
+        document.getElementById("userName").innerHTML = name;
+
+        function send() {
+            let val = document.getElementById("inputTxt").value;
+
+            if (val == "") {
+                alert("Please Enter Some Message!!");
+                return;
+            }
+
+            fetch("/addMessage", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    user: name,
+                    text: val, recepiet: selectedUser
+                }),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log("Message sent Succesfully!");
+                        document.getElementById("inputTxt").value = "";
+                        fetchChatMessages();
+                    } else {
+                        console.log("Error Sending Messages...");
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error Sending Message:", error);
+                });
+
+        }
+
+        async function addUser(user) {
+            fetch("/addUser", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    user: name,
+
+                }),
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log("User Added Succesfully!");
+                        //   document.getElementById("inputTxt").value = "";
+                        fetchUsers();
+                    } else {
+                        console.log("Error Adding Users...");
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error Adding Users:", error);
+                });
+        }
+
+        async function fetchUsers() {
+            try {
+                const response = await fetch("/getUser");
+                if (response.ok) {
+                    const users = await response.json();
+                    // console.log("Users", users);
+                    displayUsers(users);
+                } else {
+                    console.error("Error adding users", response.statusText);
+                }
+            } catch (error) {
+                console.error("Error fetching chat message", error);
+            }
+        }
+
+
+        async function fetchChatMessages() {
+            try {
+                const response = await fetch("/getMessages");
+                if (response.ok) {
+                    const messages = await response.json();
+                    console.log("Messages", messages);
+                    displayChatMessages(messages);
+                } else {
+                    console.error("Error fetching Chat message:", response.statusText);
+                }
+            } catch (error) {
+                console.error("Error fetching chat message", error);
+            }
+        }
+
+
+        function displayUsers(users) {
+            let elem = document.getElementById("userSection");
+            // console.log("Element", elem);
+
+            elem.innerHTML = ""
+
+
+            users.forEach((element) => {
+                if (element.user != name) {
+                    // console.log("Element", element);
+                    let username = document.createElement("div");
+                    username.setAttribute("id", userName);
+
+                    // let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                    // svg.setAttribute("id", "user");
+                    // svg.setAttribute("fill", "#000000");
+                    // svg.setAttribute("width", "800px");
+                    // svg.setAttribute("height", "800px");
+                    // svg.setAttribute("viewBox", "0 0 24 24");
+
+                    // // Create the path element
+                    // let path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                    // path.setAttribute("d", "M15.71,12.71a6,6,0,1,0-7.42,0,10,10,0,0,0-6.22,8.18,1,1,0,0,0,2,.22,8,8,0,0,1,15.9,0,1,1,0,0,0,1,.89h.11a1,1,0,0,0,.88-1.1A10,10,0,0,0,15.71,12.71ZM12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Z");
+
+                    // // Append the path to the SVG
+                    // svg.appendChild(path);
+
+                    let otherUsers = document.createElement("div");
+                    otherUsers.setAttribute("id", "otherUsers");
+                    let txt = document.createTextNode(element.user)
+                    
+                    otherUsers.classList.remove("selected")
+
+                    if (selectedUser == element.user) {
+                        otherUsers.classList.add("selected")
+                    }
+                    otherUsers.appendChild(txt);
+
+                    // username.appendChild(svg);
+                    username.appendChild(otherUsers);
+                    elem.appendChild(username);
+                    otherUsers.addEventListener("click", () => {
+                        selectUser(element.user, users)
+                        console.log("User's",element.user);
+                    })
+                }
+            });
+        }
+
+        function selectUser(name, users) {
+            if (selectUser === name) {
+                selectedUser = null;
+            }
+            else {
+                selectedUser = name;
+            }
+            displayUsers(users);
+        }
+        function displayChatMessages(messages) {
+            let mainSec = document.getElementById("mainSection");
+            mainSec.innerHTML = "";
+
+            messages.forEach((element) => {
+
+                if (element.recepiet === null ||
+                    element.recepiet === name || element.user === name
+                ) {
+                    let msgContainer = document.createElement("div");
+
+                    let smallText = document.createElement("div");
+                    smallText.classList.add("small-text");
+
+
+                    let msgSender = document.createElement("div");
+                    msgSender.setAttribute("class", "message-sender");
+
+
+                    let msg = document.createElement("div");
+                    msg.setAttribute("class", "message");
+
+                    let txt = document.createTextNode(element.text);
+                    let userTxt = document.createTextNode(element.user);
+                    msg.appendChild(txt);
+                    smallText.appendChild(userTxt);
+                    msgSender.appendChild(msg);
+                    msgContainer.appendChild(smallText);
+                    msgContainer.appendChild(msgSender);
+                    mainSec.appendChild(msgContainer);
+                }
+
+            });
+        }
+        setInterval(fetchChatMessages, 1000);
+        setInterval(fetchUsers, 1000);
+
+    </script>
+</body>
+
+</html>
